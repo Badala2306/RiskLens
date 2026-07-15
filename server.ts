@@ -759,10 +759,3 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Express Credit Risk Server running on port ${PORT}`);
 });
-
-// server.ts (at the very end of the file)
-app.listen(PORT, () => {
-  console.log(`Express Credit Risk Server running on port ${PORT}`);
-});
-
-export default app; // 👈 Ensure this line is present!
