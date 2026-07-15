@@ -1,95 +1,29 @@
-# 📊 RiskLens — Full-Stack Credit Risk Intelligence & ML Analytics
+# RiskLens — Credit Risk Intelligence Platform (Full-Stack React)
 
+An end-to-end, modern Full-Stack credit intelligence and portfolio risk analytics platform. This application implements the UCI-inspired credit risk predictive model and introduces several high-value business analytics features including SHAP-like explainability, a business-optimal threshold calculator, and an interactive what-if risk simulator with real-time Gemini-powered underwriting.
 
-<p align="center">
-  <a href="https://img.shields.io/badge/Language-TypeScript-blue">
-    <img src="https://img.shields.io/badge/Language-TypeScript-blue" alt="TypeScript" />
-  </a>
-  <a href="https://img.shields.io/badge/Framework-React%20%2F%20Vite-61dafb">
-    <img src="https://img.shields.io/badge/Framework-React%20%2F%20Vite-61dafb" alt="React & Vite" />
-  </a>
-  <a href="https://img.shields.io/badge/Backend-Express%20(Node)-339933">
-    <img src="https://img.shields.io/badge/Backend-Express%20(Node)-339933" alt="Express" />
-  </a>
-  <a href="https://img.shields.io/badge/AI-Gemini%203.5%20Flash-orange">
-    <img src="https://img.shields.io/badge/AI-Gemini%203.5%20Flash-orange" alt="Gemini AI" />
-  </a>
-  <a href="https://img.shields.io/badge/Styling-Tailwind%20CSS-38bdf8">
-    <img src="https://img.shields.io/badge/Styling-Tailwind%20CSS-38bdf8" alt="Tailwind CSS" />
-  </a>
-</p>
+## ✨ Advanced Features Added
 
-**RiskLens** is an end-to-end, enterprise-grade Full-Stack Credit Intelligence and Portfolio Risk Analytics platform. Powered by an authentic machine learning framework and real-world credit historical data, the application empowers credit underwriters and financial analysts to simulate risk and make mathematically optimized lending decisions.
+1. **High-Fidelity Portfolio Dataset**:
+   Includes a rich portfolio database of 2,000 active and defaulted loan accounts with realistic behavioral correlations (income, credit score, utilization, late payments, debt-to-income).
 
----
+2. **Expected Profit Optimizer (Threshold Calculator)**:
+   Calculates the mathematically optimal decision cutoff point that maximizes net bank profit based on the **Cost of a Default (capital loss)** versus the **Cost of Rejection (missed opportunity / lost interest margin)**. Shows the total expected value added over a static 0.5 ML threshold.
 
-## ✨ Features & Architecture
+3. **Global Model Validation & Confusion Matrix**:
+   Compares Logistic Regression champion model with Random Forest challenger, displaying standard validation metrics (ROC-AUC, Precision, Recall, F1) and interactive Confusion Matrices alongside global Feature Importances.
 
-* **High-Fidelity Dataset**: Processes over 2,500 real-world credit risk profiles, normalising indicators (Income, Employment History, Loan Intent, and Credit History) to produce realistic default curves.
-* **Profit-Utility Optimization**: Features an interactive threshold optimizer using cost-benefit matrices. Underwriters can adjust loss-on-default versus forgone interest margins to discover the mathematically optimal decision cutoff score ($p^*$) to maximize net portfolio profit.
-* **Champion-vs-Challenger Validation**: Evaluates classification performance through dynamic graphs representing ROC-AUC, Precision-Recall curves, and live Confusion Matrices.
-* **Interactive What-If Simulator**: Simulates candidate loan risk in real-time. Adjust individual parameters and view instant credit risk tiers and localized contributing factors.
-* **Generative Underwriting Memos**: Connects to server-side Gemini 3.5 API routes to compile executive portfolio audits and candidate memos with an offline local template fallback.
+4. **Interactive "What-If" Credit Simulator**:
+   Allows underwriters to manipulate applicant attributes (utilization, DTI, FICO, late payments) and instantly calculate simulated default probabilities, complete with interactive gauges and decision recommendations.
 
----
+5. **Individual SHAP Explainability & Gemini Audit**:
+   Retrieves individual customer profiles, maps local SHAP feature contributions (showing positive and negative drivers of the prediction), and uses server-side **Gemini 3.5 Flash** to draft a clear natural language risk report.
 
-## 📸 Platform Interface Tour
+6. **Gemini Credit Committee Risk Memo**:
+   Dynamically compiles current filtered portfolio metrics, flags segments and regional risk concentration, and drafts an executive risk committee memo via generative AI.
 
-Here is a visual walkthrough of the platform's core analytical screens:
+## 🛠️ Architecture
 
-### 1. Portfolio Overview Dashboard
-*Displays macro loan profiles, default distributions, credit scores, and loan-to-income indicators across the historical dataset.*
-<p align="center">
-  <img src="assets/portfolio_overview.png" alt="Portfolio Overview" width="100%" style="border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" />
-</p>
-
-### 2. Expected Profit & Decision Threshold Optimizer
-*Calculates optimal decision boundaries ($p^*$) using financial utility matrices, proving why static 0.5 default boundaries are business-suboptimal.*
-<p align="center">
-  <img src="assets/profit_optimizer.png" alt="Expected Profit Optimizer" width="100%" style="border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" />
-</p>
-
-### 3. What-If Candidate Simulator & Gemini Audit Memo
-*Allows real-time underwriter parameter changes, instantly updating risk tiers and executing server-side Gemini AI credit evaluation reports.*
-<p align="center">
-  <img src="assets/what_if_simulator.png" alt="What-If Simulator & Gemini Memo" width="100%" style="border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" />
-</p>
-
-### 4. Champion-vs-Challenger Model Validation
-*Displays interactive ROC-AUC, Precision-Recall, and custom Confusion Matrices comparing traditional scoring methods with advanced ML classifiers.*
-<p align="center">
-  <img src="assets/model_validation.png" alt="Model Validation" width="100%" style="border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" />
-</p>
-
----
-
-## 🛠️ Step-by-Step Local Setup Guide (VS Code)
-
-To run **RiskLens** on your machine:
-
-1. **Extract Project Zip**: Download and extract the project zip to a folder (e.g., `C:/Projects/RiskLens` or `~/Projects/RiskLens`).
-2. **Open in VS Code**: Select **File > Open Folder...** and choose your extracted project directory.
-3. **Install Node.js**: Ensure Node.js (LTS version) is installed on your computer. Verify in the VS Code terminal:
-   ```bash
-   node -v
-   npm -v
-   ```
-4. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
-5. **Add Environment Variables**: Create a `.env` file in the root folder (next to `package.json`) and add your Gemini API Key:
-   ```env
-   GEMINI_API_KEY=your_actual_gemini_api_key_here
-   ```
-   *Note: `.env` is automatically ignored from git tracking by our pre-set `.gitignore`.*
-6. **Start Dev Server**:
-   ```bash
-   npm run dev
-   ```
-   Navigate to **`http://localhost:3000`** in your browser.
-
----
-
-## Author
- Manan Badala
+* **Frontend**: React 19, Tailwind CSS, Lucide Icons, Recharts (responsive data visualizations).
+* **Backend**: Express (REST API), in-memory SQLite-matching state generator, Node-native.
+* **AI/LLM Core**: Server-side Google GenAI SDK (`@google/genai`) using `gemini-3.5-flash` with offline structural templates fallback.
