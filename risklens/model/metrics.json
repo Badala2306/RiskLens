@@ -1,0 +1,51 @@
+{
+  "results": [
+    {
+      "model": "LogisticRegression",
+      "roc_auc": 0.7284,
+      "precision": 0.264,
+      "recall": 0.6321,
+      "f1": 0.3724,
+      "confusion_matrix": {
+        "tn": 1174,
+        "fp": 527,
+        "fn": 110,
+        "tp": 189
+      }
+    },
+    {
+      "model": "RandomForest",
+      "roc_auc": 0.7195,
+      "precision": 0.2523,
+      "recall": 0.5619,
+      "f1": 0.3482,
+      "confusion_matrix": {
+        "tn": 1203,
+        "fp": 498,
+        "fn": 131,
+        "tp": 168
+      }
+    }
+  ],
+  "best_model": "LogisticRegression",
+  "feature_cols": [
+    "age",
+    "employment_years",
+    "annual_income",
+    "existing_loans",
+    "credit_utilization",
+    "debt_to_income",
+    "late_payments_12m",
+    "payment_history_score",
+    "loan_amount",
+    "loan_term_months",
+    "interest_rate",
+    "region_East",
+    "region_North",
+    "region_South",
+    "region_West",
+    "segment_Retail",
+    "segment_Small Business",
+    "segment_Student"
+  ]
+}
