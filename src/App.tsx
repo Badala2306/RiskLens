@@ -485,6 +485,28 @@ export default function App() {
           )}
 
           {/* Quick Metrics Row */}
+          {!stats && !loading && (
+            <div className="bg-rose-500/10 border border-rose-500/20 rounded-xl p-5 text-rose-200 text-sm flex items-start space-x-3.5 shadow-sm max-w-full">
+              <AlertTriangle className="w-5.5 h-5.5 shrink-0 text-rose-400 mt-0.5" />
+              <div>
+                <h4 className="font-bold text-white text-base">Backend API Connection Issue Detected</h4>
+                <p className="text-xs text-rose-300/90 mt-1.5 leading-relaxed">
+                  The application is running in client-only fallback state because it failed to fetch data from the Credit Risk backend server endpoints (e.g., <code className="bg-rose-950 px-1.5 py-0.5 rounded font-mono text-white text-[11px]">/api/portfolio/stats</code>).
+                </p>
+                <div className="mt-3.5 space-y-2.5 text-[12px] text-rose-300">
+                  <p className="flex items-center space-x-1.5 font-medium">
+                    <span className="inline-block w-1.5 h-1.5 bg-rose-400 rounded-full"></span>
+                    <span><strong>Local Environment:</strong> Ensure that your server is running on port 3001 and your proxy configuration is mapped.</span>
+                  </p>
+                  <p className="flex items-center space-x-1.5 font-medium">
+                    <span className="inline-block w-1.5 h-1.5 bg-rose-400 rounded-full"></span>
+                    <span><strong>Cloud Deployment:</strong> Verify that your API route handlers are deployed and match the <code className="bg-rose-950 px-1.5 py-0.5 rounded font-mono text-white text-[11px]">/api/*</code> prefix.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {stats && (
             <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 flex items-center justify-between shadow-sm">
@@ -601,7 +623,7 @@ export default function App() {
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">Default Rate by Customer Segment</h3>
                     <p className="text-xs text-slate-400">Segment defaults compared to total exposure</p>
                   </div>
-                  <div className="flex-1 w-full min-h-0">
+                  <div className="w-full h-[240px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={segmentStats} margin={{ top: 5, right: 5, left: -25, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
@@ -624,7 +646,7 @@ export default function App() {
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">Default Rate by Region</h3>
                     <p className="text-xs text-slate-400">Concentration of portfolio default risk by region</p>
                   </div>
-                  <div className="flex-1 w-full min-h-0">
+                  <div className="w-full h-[240px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={regionStats} margin={{ top: 5, right: 5, left: -25, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
@@ -651,7 +673,7 @@ export default function App() {
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">Historical Monthly Default Rate Trend</h3>
                     <p className="text-xs text-slate-400">Chronological trend over the last 24 months of loans</p>
                   </div>
-                  <div className="flex-1 w-full min-h-0">
+                  <div className="w-full h-[240px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={trendStats} margin={{ top: 5, right: 5, left: -25, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
@@ -674,7 +696,7 @@ export default function App() {
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">Risk Banding by Credit Utilization</h3>
                     <p className="text-xs text-slate-400">Empirical default rate across behavioral credit utilization bands</p>
                   </div>
-                  <div className="flex-1 w-full min-h-0">
+                  <div className="w-full h-[240px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={utilizationStats} margin={{ top: 5, right: 5, left: -25, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
@@ -858,7 +880,7 @@ export default function App() {
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">Net Portfolio Profit Curve by Risk Threshold</h3>
                     <p className="text-xs text-slate-400">Profit peaks at the mathematically optimal decision cutoff point</p>
                   </div>
-                  <div className="flex-1 w-full min-h-0">
+                  <div className="w-full h-[260px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={optimizerResults.profitCurve} margin={{ top: 5, right: 15, left: -10, bottom: 5 }}>
                         <defs>
@@ -1006,7 +1028,7 @@ export default function App() {
                     <h3 className="text-sm font-bold text-white uppercase tracking-wider">Top Global Credit Risk Drivers (Feature Importance)</h3>
                     <p className="text-xs text-slate-400">How much weight the machine learning model assigns to each risk driver globally</p>
                   </div>
-                  <div className="flex-1 w-full min-h-0">
+                  <div className="w-full h-[280px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart 
                         data={metrics.feature_importance} 
